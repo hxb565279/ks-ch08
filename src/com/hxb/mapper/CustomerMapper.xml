@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="com.hxb.mapper.CustomerMapper">
+    <select id="findCustomerById" parameterType="Integer" resultType="com.hxb.po.Customer">
+        select * from t_customer where 1=1
+        <if test="username !=null and username!=''">
+            and username like concat ('%',#{username},'%')
+        </if>
+        <if test="jobs !=null  and jobs!=''">
+            and jobs =#{jobs}
+        </if>
+    </select>
+
+</mapper>
